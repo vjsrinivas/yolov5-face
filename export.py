@@ -121,7 +121,10 @@ if __name__ == '__main__':
 
     # TensorRT export
     if opt.onnx2trt:
-        from torch2trt.trt_model import ONNX_to_TRT
+        import sys
+        sys.path.append('torch2trt')
+        from trt_model import ONNX_to_TRT
+        #from torch2trt.trt_model import ONNX_to_TRT
         print('\nStarting TensorRT...')
         ONNX_to_TRT(onnx_model_path=f,trt_engine_path=f.replace('.onnx', '.trt'),fp16_mode=opt.fp16_trt)
 
